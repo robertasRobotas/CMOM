@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 const PriceWrapper = styled.div`
   margin-left: auto;
-  font-size: 30px;
+  font-size: ${(props) => props.priceSize};
+  font-weight: bold;
 `;
 const Currency = styled.div`
   font-size: 18px;
   display: inline;
 `;
 
-const price = ({ currentPrice, currency }) => (
-  <PriceWrapper>
+const price = ({ currentPrice, currency, priceSize }) => (
+  <PriceWrapper priceSize={priceSize}>
     {currentPrice}
     <Currency>{currency}</Currency>
   </PriceWrapper>

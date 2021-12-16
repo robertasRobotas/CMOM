@@ -8,9 +8,6 @@ const NameWrapper = styled.div`
 `;
 
 const Symbol = styled.div`
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 150%;
   font-size: ${(props) => props.symbolSize};
   font-weight: bold;
 `;

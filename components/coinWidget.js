@@ -41,7 +41,7 @@ const coinWidget = ({
   const router = useRouter();
 
   const openCoinPage = () => {
-    router.push(`${id}`);
+    router.push(`coin/?coin=${id}`);
   };
 
   return (

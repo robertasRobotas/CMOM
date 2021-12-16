@@ -3,8 +3,8 @@ import Head from "next/head";
 
 const PageWrapper = styled.div`
   width: 100%;
-  height: 100px;
   padding-top: 80px;
+  padding-bottom: 80px;
 `;
 
 function MyApp({ Component, pageProps }) {

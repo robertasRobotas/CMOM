@@ -14,9 +14,11 @@ const CoinsWrapper = styled.div`
   font-family: "Roboto", sans-serif;
 `;
 
-export default function Home() {
-  const [coins, setCoins] = useState();
-  const currency = "eur";
+const currency = "eur";
+const perPageCoins = 10;
+
+export default function Home({ coinsList }) {
+  const [coins, setCoins] = useState(coinsList);
 
   const fetchCoinsMarket = async () => {
     console.info("Refreshed");
@@ -25,7 +27,7 @@ export default function Home() {
       {
         params: {
           vs_currency: currency,
-          per_page: 10,
+          per_page: perPageCoins,
         },
       }
     );
@@ -43,20 +45,37 @@ export default function Home() {
         text="Coins ordered by market cap:"
         onRefresh={fetchCoinsMarket}
       />
-      {coins &&
-        coins.map((coin) => (
-          <CoinWidget
-            key={coin.id}
-            id={coin.id}
-            name={coin.name}
-            symbol={coin.symbol}
-            currentPrice={coin.current_price}
-            high24h={coin.high_24h}
-            low24h={coin.low_24h}
-            imageLink={coin.image}
-            currency={currency}
-          />
-        ))}
+      {coins.map((coin) => (
+        <CoinWidget
+          key={coin.id}
+          id={coin.id}
+          name={coin.name}
+          symbol={coin.symbol}
+          currentPrice={coin.current_price}
+          high24h={coin.high_24h}
+          low24h={coin.low_24h}
+          imageLink={coin.image}
+          currency={currency}
+        />
+      ))}
     </CoinsWrapper>
   );
+}
+
+export async function getServerSideProps() {
+  const coinsData = await axios.get(
+    "https://api.coingecko.com/api/v3/coins/markets",
+    {
+      params: {
+        vs_currency: currency,
+        per_page: perPageCoins,
+      },
+    }
+  );
+
+  return {
+    props: {
+      coinsList: coinsData.data,
+    },
+  };
 }

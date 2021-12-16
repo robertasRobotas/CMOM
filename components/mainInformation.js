@@ -28,7 +28,13 @@ const mainInformation = ({
         nameSize={nameSize}
         symbolSize={symbolSize}
       />
-      <Price currentPrice={currentPrice} currency={currency} />
+      {currentPrice && (
+        <Price
+          currentPrice={currentPrice}
+          currency={currency}
+          priceSize={symbolSize}
+        />
+      )}
     </MainInformationWrapper>
   );
 };
