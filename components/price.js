@@ -11,7 +11,7 @@ const Currency = styled.div`
 `;
 
 const price = ({ currentPrice, currency, priceSize }) => (
-  <PriceWrapper priceSize={priceSize}>
+  <PriceWrapper priceSize={priceSize} data-testid="price">
     {currentPrice}
     <Currency>{currency}</Currency>
   </PriceWrapper>
