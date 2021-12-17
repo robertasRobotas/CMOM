@@ -36,10 +36,6 @@ export default function Home({ coinsList }) {
     setCoins(coinsData.data);
   };
 
-  useEffect(() => {
-    fetchCoinsMarket();
-  }, []);
-
   return (
     <CoinsWrapper>
       <PageLabel
