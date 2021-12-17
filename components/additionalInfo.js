@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const AdditionalInfo = styled.div``;
 
@@ -13,9 +13,9 @@ const InfoRow = styled.div`
   letter-spacing: 1px;
 `;
 
-const InfoLine = ({ title, arg }) => (
+const InfoLine = ({title, arg}) => (
   <InfoRow>
-    {title}: {arg || "-"}
+    {title}: {arg || '-'}
   </InfoRow>
 );
 

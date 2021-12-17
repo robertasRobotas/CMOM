@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
-import styled from "styled-components";
-import MainInformation from "./mainInformation";
+import {useRouter} from 'next/router';
+import styled from 'styled-components';
+import MainInformation from './mainInformation';
 
 const Coin = styled.div`
   border: 1px solid #bdbbbb;

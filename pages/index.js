@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import styled from "styled-components";
-import CoinWidget from "../components/coinWidget";
-import PageLabel from "../components/pageLabel";
-import Spinner from "../components/spinner";
+import {useState} from 'react';
+import axios from 'axios';
+import styled from 'styled-components';
+import CoinWidget from '../components/coinWidget';
+import PageLabel from '../components/pageLabel';
+import Spinner from '../components/spinner';
 
 const CoinsWrapper = styled.div`
   backkground-color: blue;
@@ -15,22 +15,22 @@ const CoinsWrapper = styled.div`
   font-family: "Roboto", sans-serif;
 `;
 
-const currency = "eur";
+const currency = 'eur';
 const perPageCoins = 10;
 
-export default function Home({ coinsList }) {
+export default function Home({coinsList}) {
   const [coins, setCoins] = useState(coinsList);
 
   const fetchCoinsMarket = async () => {
-    console.info("Refreshed");
+    console.info('Refreshed');
     const coinsData = await axios.get(
-      "https://api.coingecko.com/api/v3/coins/markets",
-      {
-        params: {
-          vs_currency: currency,
-          per_page: perPageCoins,
+        'https://api.coingecko.com/api/v3/coins/markets',
+        {
+          params: {
+            vs_currency: currency,
+            per_page: perPageCoins,
+          },
         },
-      }
     );
 
     setCoins(coinsData.data);
@@ -62,13 +62,13 @@ export default function Home({ coinsList }) {
 
 export async function getServerSideProps() {
   const coinsData = await axios.get(
-    "https://api.coingecko.com/api/v3/coins/markets",
-    {
-      params: {
-        vs_currency: currency,
-        per_page: perPageCoins,
+      'https://api.coingecko.com/api/v3/coins/markets',
+      {
+        params: {
+          vs_currency: currency,
+          per_page: perPageCoins,
+        },
       },
-    }
   );
 
   return {

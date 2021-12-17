@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Head from "next/head";
+import styled from 'styled-components';
+import Head from 'next/head';
 
 const PageWrapper = styled.div`
   width: 100%;
@@ -7,7 +7,7 @@ const PageWrapper = styled.div`
   padding-bottom: 80px;
 `;
 
-function MyApp({ Component, pageProps }) {
+function MyApp({Component, pageProps}) {
   return (
     <PageWrapper>
       <Head>

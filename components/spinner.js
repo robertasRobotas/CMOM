@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const Spinner = ({ loading }) => (
+const Spinner = ({loading}) => (
   <>
     {loading && (
       <StyledSpinner viewBox="0 0 50 50">

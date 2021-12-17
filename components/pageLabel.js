@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Image from "next/image";
-import refreshIcon from "../assets/refreshIcon.png";
+import styled from 'styled-components';
+import Image from 'next/image';
+import refreshIcon from '../assets/refreshIcon.png';
 
 const PageLabelWrapper = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Refresh = styled.div`
   cursor: pointer;
 `;
 
-const mainLabel = ({ text, onRefresh }) => (
+const mainLabel = ({text, onRefresh}) => (
   <PageLabelWrapper>
     <Text>{text}</Text>
     <Refresh onClick={() => onRefresh()}>

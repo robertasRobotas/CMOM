@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
-import styled from "styled-components";
-import MainInformation from "../components/mainInformation";
-import Spinner from "../components/spinner";
-import AdditionalInfo from "../components/additionalInfo";
+import {useState, useEffect} from 'react';
+import {useRouter} from 'next/router';
+import axios from 'axios';
+import styled from 'styled-components';
+import MainInformation from '../components/mainInformation';
+import Spinner from '../components/spinner';
+import AdditionalInfo from '../components/additionalInfo';
 
 const CoinWrapper = styled.div`
   width: 420px;
@@ -27,28 +27,28 @@ const BackButton = styled.div`
   margin-bottom: 10px;
 `;
 
-const currency = "eur";
-const language = "en";
+const currency = 'eur';
+const language = 'en';
 
 const coinPage = () => {
   const router = useRouter();
   const [coin, setCoin] = useState();
 
-  const getUrlParam = ({ searchParams }) => {
+  const getUrlParam = ({searchParams}) => {
     const urlParams = new URLSearchParams(searchParams);
-    const coin = urlParams.get("coin");
+    const coin = urlParams.get('coin');
     return coin;
   };
 
   const goBack = () => {
-    router.push("/");
+    router.push('/');
   };
 
   useEffect(async () => {
-    const coinId = getUrlParam({ searchParams: window.location.search });
+    const coinId = getUrlParam({searchParams: window.location.search});
 
     const coinData = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${coinId}`
+        `https://api.coingecko.com/api/v3/coins/${coinId}`,
     );
 
     setCoin(coinData.data);
@@ -56,7 +56,7 @@ const coinPage = () => {
 
   return (
     <CoinWrapper>
-      <BackButton onClick={() => goBack()}>{"<-- Back"}</BackButton>
+      <BackButton onClick={() => goBack()}>{'<-- Back'}</BackButton>
       <CoinInfo>
         {coin && (
           <>

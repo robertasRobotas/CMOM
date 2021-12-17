@@ -1,6 +1,4 @@
-import Head from "next/head";
-import Image from "next/image";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const NameWrapper = styled.div`
   margin-left: 16px;
@@ -16,7 +14,7 @@ const Name = styled.div`
   font-size: ${(props) => props.nameSize};
 `;
 
-const label = ({ name, symbol, nameSize, symbolSize }) => {
+const label = ({name, symbol, nameSize, symbolSize}) => {
   return (
     <NameWrapper>
       <Symbol symbolSize={symbolSize}>{symbol.toUpperCase()}</Symbol>
