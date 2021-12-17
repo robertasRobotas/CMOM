@@ -4,13 +4,18 @@ import "@testing-library/jest-dom/extend-expect";
 
 const props = {
   currentPrice: 100,
-  currency: 200,
+  currency: "eur",
   priceSize: 20,
 };
 
 describe("Spinner component", () => {
-  it("should render component when loading is true", () => {
+  it("Component should have '100' text value", () => {
     render(<Price {...props} />);
     expect(screen.getByTestId("price")).toHaveTextContent("100");
+  });
+
+  it("Component should have 'eur' text value", () => {
+    render(<Price {...props} />);
+    expect(screen.getByTestId("price")).toHaveTextContent("eur");
   });
 });
