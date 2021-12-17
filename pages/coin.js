@@ -4,6 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 import MainInformation from "../components/mainInformation";
 import Spinner from "../components/spinner";
+import AdditionalInfo from "../components/additionalInfo";
 
 const CoinWrapper = styled.div`
   width: 420px;
@@ -24,19 +25,6 @@ const BackButton = styled.div`
   cursor: pointer;
   margin-left: 4px;
   margin-bottom: 10px;
-`;
-
-const AdditionalInfo = styled.div``;
-
-const Description = styled.p`
-  margin-top: 30px;
-  line-height: 1.5;
-`;
-
-const InfoRow = styled.div`
-  margin-top: 20px;
-  line-height: 1.5;
-  letter-spacing: 1px;
 `;
 
 const currency = "eur";
@@ -81,21 +69,14 @@ const coinPage = () => {
               currentPrice={coin.market_data.current_price[currency]}
               nameSize="22px"
             />
-            <AdditionalInfo>
-              <Description
-                dangerouslySetInnerHTML={{
-                  __html: coin.description[language],
-                }}
-              />
-
-              <InfoRow>Homepage: {coin.links.homepage[0]}</InfoRow>
-              <InfoRow>
-                Market cap(eur): {coin.market_data.market_cap[currency]}
-                {currency}
-              </InfoRow>
-              <InfoRow>Hashing algorithm: {coin.hashing_algorithm}</InfoRow>
-              <InfoRow>Genesis Date: {coin.genesis_date}</InfoRow>
-            </AdditionalInfo>
+            <AdditionalInfo
+              description={coin.description[language]}
+              homepage={coin.links.homepage[0]}
+              marketCap={coin.market_data.market_cap[currency]}
+              hashingAlgorythm={coin.hashing_algorithm}
+              genesisDate={coin.genesis_date}
+              currency={currency}
+            />
           </>
         )}
         <Spinner loading={!coin} />
