@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import styled from "styled-components";
 import MainInformation from "../components/mainInformation";
+import Spinner from "../components/spinner";
 
 const CoinWrapper = styled.div`
   width: 420px;
@@ -10,13 +11,13 @@ const CoinWrapper = styled.div`
 `;
 
 const CoinInfo = styled.div`
-  backkground-color: blue;
   width: 500px;
   border: 1px solid #bdbbbb;
   border-radius: 10px;
   margin: auto;
   padding: 1rem;
   font-family: "Roboto", sans-serif;
+  min-height: 100px;
 `;
 
 const BackButton = styled.div`
@@ -29,6 +30,13 @@ const AdditionalInfo = styled.div``;
 
 const Description = styled.p`
   margin-top: 30px;
+  line-height: 1.5;
+`;
+
+const InfoRow = styled.div`
+  margin-top: 20px;
+  line-height: 1.5;
+  letter-spacing: 1px;
 `;
 
 const currency = "eur";
@@ -55,8 +63,6 @@ const coinPage = () => {
       `https://api.coingecko.com/api/v3/coins/${coinId}`
     );
 
-    console.log("coinData", coinData.data);
-
     setCoin(coinData.data);
   }, []);
 
@@ -81,9 +87,18 @@ const coinPage = () => {
                   __html: coin.description[language],
                 }}
               />
+
+              <InfoRow>Homepage: {coin.links.homepage[0]}</InfoRow>
+              <InfoRow>
+                Market cap(eur): {coin.market_data.market_cap[currency]}
+                {currency}
+              </InfoRow>
+              <InfoRow>Hashing algorithm: {coin.hashing_algorithm}</InfoRow>
+              <InfoRow>Genesis Date: {coin.genesis_date}</InfoRow>
             </AdditionalInfo>
           </>
         )}
+        <Spinner loading={!coin} />
       </CoinInfo>
     </CoinWrapper>
   );

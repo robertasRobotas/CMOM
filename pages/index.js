@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import CoinWidget from "../components/coinWidget";
 import PageLabel from "../components/pageLabel";
+import Spinner from "../components/spinner";
 
 const CoinsWrapper = styled.div`
   backkground-color: blue;
@@ -58,6 +59,7 @@ export default function Home({ coinsList }) {
           currency={currency}
         />
       ))}
+      <Spinner loading={!coins} />
     </CoinsWrapper>
   );
 }
